@@ -74,13 +74,16 @@
     --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
     --sidebar-border: oklch(0.92 0.004 286.32);
     --sidebar-ring: oklch(0.705 0.015 286.067);
-    /*--radial-gradient: radial-gradient(
-        circle at 50% 50%,
+    --lightsource-radial-gradient: radial-gradient(
+        circle at 25% 25%,
         rgba(255, 255, 255) 0%,
-        rgba(255, 255, 255, 0.4) 40%,
-        rgba(255, 255, 255, 0.1) 100%,
-        transparent 100%
-    );*/
+        rgba(255, 255, 255, 0.95) 10%,
+        rgba(255, 255, 255, 0.25) 20%,
+        rgba(255, 255, 255, 0.25) 30%,
+        rgba(255, 255, 255, 0.5) 40%,
+        rgba(255, 255, 255, 0.5) 60%,
+        rgba(255, 255, 255, 0.5) 100%
+    );
     --light-ray: linear-gradient(
         to bottom,
         /* Define the direction: from top edge to bottom edge */
@@ -96,6 +99,14 @@
             100% /* Fully transparent at the bottom (end of the ray) */
     );
     --linear-gradient: var(--linear-gradient);
+
+    --light-ring: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255) 0%,
+        rgba(255, 255, 255, 0.5) 60%,
+        rgba(255, 255, 255, 0.4) 80%,
+        rgba(255, 255, 255, 0.25) 100%
+    );
 }
 
 .dark {
@@ -141,6 +152,33 @@
     }
 }
 
+.ray {
+    position: absolute;
+    left: 20vh;
+    top: -55vh;
+    width: 20vh;
+    height: 180vh;
+    background-image: var(--light-ray);
+    transform: rotate(-55deg);
+    mix-blend-mode: screen;
+
+    filter: blur(64px);
+    /*clip-path: ellipse();*/
+}
+
+.lightsource {
+    position: absolute;
+    top: -40vh;
+    left: 0vh;
+    width: 60vh;
+    height: 160vh;
+    transform: rotate(-60deg);
+    background-image: var(--lightsource-radial-gradient);
+    filter: blur(96px);
+    opacity: 0.5;
+    mix-blend-mode: screen;
+}
+
 .spotlight {
     position: absolute;
     left: -10vh;
@@ -152,7 +190,11 @@
     border-style: blur(20px);
     transform: rotate(-60deg);
     mix-blend-mode: screen;
-    opacity: 0.4;
-    filter: blur(32px);
-    /*clip-path: polygon(0% 0%, 100% 0%, 70% 100%, 30% 100%);*/
+    opacity: 0.5;
+    clip-path: polygon(0% 0%, 100% 0%, 70% 100%, 30% 100%);
+    /*clip-path: ellipse();*/
+}
+
+.spotlight-ray {
+    filter: blur(16px);
 }
